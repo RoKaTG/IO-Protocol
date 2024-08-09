@@ -33,7 +33,7 @@ The project is organized as follows:
 │   ├── format.sh           # Script for formatting and processing raw data
 │   ├── calc_projection.py  # Script for calculating energy projection
 │   ├── plot_delta.py       # Script for plotting energy consumption with delta
-│   ├── plot_artificial_mean.py  # Script for plotting with an artificially high mean
+│   ├── plot_mean.py        # Script for plotting with a mean
 │   └── ...                 # Other scripts related to the project
 ├── results/                # Directory to store results and generated plots
 ├── README.md               # This file
