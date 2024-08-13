@@ -15,8 +15,7 @@ Welcome to the repository for my internship project focused on the analysis of e
     - [iotest.c and iotest.h](#iotestc-and-iotesth)
     - [benchmark.sh](#benchmarksh)
     - [plotting.sh](#plottingsh)
-6. [Contributing](#contributing)
-7. [License](#license)
+    - [format.sh](#formatsh)
 
 ## Project Overview
 
@@ -27,17 +26,18 @@ This project was developed during my internship and aims to analyze energy consu
 The project is organized as follows:
 
 ```plaintext
-├── data/                   # Directory containing raw and processed data files
+├── benchmark.sh            # Script for running IO benchmarks
+├── format.sh               # Script for formatting and processing raw data
+├── plotting.sh             # Script for plotting raw data
+├── logs/                   # Directory containing raw and processed data files
 ├── scripts/                # Directory containing all Python and Shell scripts
-│   ├── benchmark.sh        # Script for running IO benchmarks
-│   ├── format.sh           # Script for formatting and processing raw data
-│   ├── calc_projection.py  # Script for calculating energy projection
-│   ├── plot_delta.py       # Script for plotting energy consumption with delta
-│   ├── plot_artificial_mean.py  # Script for plotting with an artificially high mean
-│   └── ...                 # Other scripts related to the project
-├── results/                # Directory to store results and generated plots
-├── README.md               # This file
-└── LICENSE                 # License for the project
+│   ├── plot/               # Directory containing all Python and Shell scripts for plotting
+        └── ...
+│   ├── format/             # Directory containing all Python and Shell scripts for formating
+        └── ...
+│   ├── math/               # Directory containing all Python and Shell scripts for computing projection & line equation
+│       └── ...             
+├── README.md       
 ```
 
 ## Usage
@@ -109,3 +109,40 @@ For example, to generate ALL plot for all runs per iteration:
 ## plotting.sh
 
 - `plotting.sh`: This shell script is designed to generate visual plots of the energy consumption data collected during the benchmarks. It can produce different types of plots depending on the provided arguments. The script calls various Python scripts to generate baseline plots, boxplots, and IO-specific plots.
+
+## format.sh
+
+
+The `format.sh` script is used to organize and format raw data collected during IO tests by structuring it into a more manageable format for subsequent analysis and visualization.
+
+### Usage
+
+```bash
+./format.sh <directory_to_move>
+```
+
+* `<directory_to_move>`: The name of the directory containing the raw data to be formatted. This directory will be moved into the `logs/brute_data` folder, in our case it will be either `SSD` or `HDD` (contained in `logs/`)
+
+### Main Features
+
+* **Moving Raw Data**: The script moves the specified directory containing raw data into `logs/brute_data`.
+* **Creating Formatted Directory Structure**: A new directory structure is created in `logs/formatted_data` to organize data by block size and access type (sequential or random).
+* **Formatting Energy Data**: JSON files containing energy measurements are converted to CSV files. The CSV files are then placed in the appropriate directories.
+* **Copying Plots**: Generated plots and boxplots are copied into the corresponding directories under `formatted_data`.
+* **Executing Additional Formatting Scripts**:
+	+ `generate_perf.sh`: Generates performance CSV files using another python script (same name).
+	+ `process_baseline.sh`: Formats baseline data using another python script.
+	+ `move_perf_files.sh`: Moves and merges performance CSV files.
+	+ `merge_csv_files.py` : Merges all the perf CSV file (each of them correspond to each iteration).
+	+ `rename_csv_files.sh`: Renames CSV files for clear organization.
+    + `move_perf_files.sh` : Moves the perf et energy file in the right directories.
+
+### Example
+
+To format raw data from the HDD benchmarking in the `logs/` directory:
+
+```bash
+./format.sh HDD
+```
+
+After running the script, the `HDD` directory will be moved to `logs/brute_data`, and the formatted data will be available in `logs/formatted_data/HDD`.
