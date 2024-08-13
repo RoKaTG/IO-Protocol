@@ -31,6 +31,7 @@ The project is organized as follows:
 ├── plotting.sh             # Script for plotting raw data
 ├── logs/                   # Directory containing raw and processed data files
 ├── scripts/                # Directory containing all Python and Shell scripts
+<<<<<<< HEAD
 │   ├── plot/               # Directory containing all Python and Shell scripts for plotting
         └── ...
 │   ├── format/             # Directory containing all Python and Shell scripts for formating
@@ -38,6 +39,17 @@ The project is organized as follows:
 │   ├── math/               # Directory containing all Python and Shell scripts for computing projection & line equation
 │       └── ...             
 ├── README.md       
+=======
+│   ├── benchmark.sh        # Script for running IO benchmarks
+│   ├── format.sh           # Script for formatting and processing raw data
+│   ├── calc_projection.py  # Script for calculating energy projection
+│   ├── plot_delta.py       # Script for plotting energy consumption with delta
+│   ├── plot_mean.py        # Script for plotting with a mean
+│   └── ...                 # Other scripts related to the project
+├── results/                # Directory to store results and generated plots
+├── README.md               # This file
+└── LICENSE                 # License for the project
+>>>>>>> 2b851e7a74095f05ee109c2d526a035657adc4ef
 ```
 
 ## Usage
