@@ -14,6 +14,7 @@ Welcome to the repository for my internship project focused on the analysis of e
 5. [Scripts Explanation](#scripts-explanation)
     - [iotest.c and iotest.h](#iotestc-and-iotesth)
     - [benchmark.sh](#benchmarksh)
+    - [ior_bench.sh](#iorbench)
     - [plotting.sh](#plottingsh)
     - [format.sh](#formatsh)
 
@@ -105,6 +106,10 @@ For example, to generate ALL plot for all runs per iteration:
 ## benchmark.sh
 
 - `benchmark.sh`: This shell script automates the process of running IO benchmarks on different storage devices. It compiles the iotest.c program, defines block sizes and file sizes, and runs multiple iterations of the IO operations while capturing the energy consumption data from a wattmeter. The results are stored in structured directories for later analysis.
+
+## ior_bench.sh
+
+- `ior_bench.sh`: This shell script automates the process of running IO benchmarks on different storage devices using the IRO library. It defines block sizes and file sizes, and runs configuration the IO operations while capturing the energy consumption data from a wattmeter. The results are stored in structured directories for later analysis.
 
 ## plotting.sh
 
